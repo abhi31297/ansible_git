@@ -1,0 +1,18 @@
+---
+
+- hosts: all
+  tasks:
+
+  - name: Update Repo
+    yum:
+      update_cache: yes  
+  - name: Install httpd package
+    yum:
+      name: httpd
+      state: present
+  - name: Changing the status to ACTIVE
+    service:
+      name: httpd
+      state: started
+      enabled: true
+     
