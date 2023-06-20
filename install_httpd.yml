@@ -5,14 +5,18 @@
 
   - name: Update Repo
     yum:
-      update_cache: yes  
+      update_cache: yes
+    when: ansible_distribution == "CentOS"
   - name: Install httpd package
     yum:
       name: httpd
       state: present
+    when: ansible_distribution == "CentOS"
   - name: Changing the status to ACTIVE
     service:
       name: httpd
       state: started
       enabled: true
+    when: ansible_distribution == "CentOS"
+
      
